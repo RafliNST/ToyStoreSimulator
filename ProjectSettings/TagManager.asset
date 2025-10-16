@@ -41,14 +41,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: rendered
+  - name: floor
     uniqueID: 3748399491
     locked: 0
-  - name: decal
+  - name: wall-1
     uniqueID: 4001082789
     locked: 0
-  - name: shadowed
-    uniqueID: 4082421905
+  - name: wall-2
+    uniqueID: 2563160545
+    locked: 0
+  - name: wall-3
+    uniqueID: 2902647937
+    locked: 0
+  - name: Player
+    uniqueID: 378840611
+    locked: 0
+  - name: furniture
+    uniqueID: 2541281853
+    locked: 0
+  - name: decal
+    uniqueID: 2658729753
     locked: 0
   m_RenderingLayers:
   - Default

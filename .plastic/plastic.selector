@@ -1,0 +1,4 @@
+repository "Toy Store Simulator 2025-10-01_10-29-45/Toy Store Simulator@18968074849569@cloud"
+  path "/"
+    br "/main"
+    co "/main"

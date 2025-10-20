@@ -1,22 +1,37 @@
 fileFormatVersion: 2
-guid: b548375a28fc93c4392224b8263558a4
+guid: e308c45c2e8459949979c0edd99d9005
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8262238342429319905
-    second: custom-pixelated-ui2_0
+      213: 4199721511246118556
+    second: custom-pixelated-ui_0
   - first:
-      213: -1495304591671297031
-    second: custom-pixelated-ui2_1
+      213: 174882707998118935
+    second: custom-pixelated-ui_1
   - first:
-      213: -1499992684692759479
-    second: custom-pixelated-ui2_2
+      213: -5680376104133894565
+    second: custom-pixelated-ui_2
   - first:
-      213: -5928649911347706701
-    second: custom-pixelated-ui2_3
+      213: 7184965340191378653
+    second: custom-pixelated-ui_3
   - first:
-      213: -3789403973768605819
-    second: custom-pixelated-ui2_4
+      213: 3683355033279092007
+    second: custom-pixelated-ui_4
+  - first:
+      213: -1184435079356472907
+    second: custom-pixelated-ui_5
+  - first:
+      213: -6505069628452873933
+    second: custom-pixelated-ui_6
+  - first:
+      213: -1240369703884855828
+    second: custom-pixelated-ui_7
+  - first:
+      213: -7422990694473249442
+    second: custom-pixelated-ui_8
+  - first:
+      213: 8636700802710575822
+    second: custom-pixelated-ui_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -151,111 +166,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: custom-pixelated-ui2_0
+      name: custom-pixelated-ui_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 56
+        x: 2
+        y: 48
         width: 48
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 8, z: 2, w: 2}
+      border: {x: 2, y: 8, z: 2, w: 4}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e2ac1a4ffd59a270800000000000000
-      internalID: 8262238342429319905
+      spriteID: c9e3461a678684a30800000000000000
+      internalID: 4199721511246118556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: custom-pixelated-ui2_1
+      name: custom-pixelated-ui_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 33
+        x: 52
+        y: 42
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714169775ee4d6200800000000000000
+      internalID: 174882707998118935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: custom-pixelated-ui_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 55
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 4, z: 7, w: 6}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e5b7a77004b21b0800000000000000
+      internalID: -5680376104133894565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: custom-pixelated-ui_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 30
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 8, z: 3, w: 3}
+      border: {x: 2, y: 5, z: 2, w: 2}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fbfb66756c9f3be0800000000000000
-      internalID: -1495304591671297031
+      spriteID: ddcc999c8ef16b360800000000000000
+      internalID: 7184965340191378653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: custom-pixelated-ui2_2
+      name: custom-pixelated-ui_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 20
+        y: 36
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 3}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7255f3433e7ed1330800000000000000
+      internalID: 3683355033279092007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: custom-pixelated-ui_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 30
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
+      border: {x: 3, y: 4, z: 4, w: 6}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94c143fb994fe2be0800000000000000
-      internalID: -1499992684692759479
+      spriteID: 5b1227b129a009fe0800000000000000
+      internalID: -1184435079356472907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: custom-pixelated-ui2_3
+      name: custom-pixelated-ui_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 26
-        height: 25
+        x: 61
+        y: 30
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 15, z: 6, w: 8}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b40874215439bda0800000000000000
-      internalID: -5928649911347706701
+      spriteID: 33952e463a959b5a0800000000000000
+      internalID: -6505069628452873933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: custom-pixelated-ui2_4
+      name: custom-pixelated-ui_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 2
+        y: 3
         width: 26
         height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 15, z: 6, w: 5}
+      border: {x: 6, y: 7, z: 6, w: 6}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58f8119b925596bc0800000000000000
-      internalID: -3789403973768605819
+      spriteID: ce569c9735259cee0800000000000000
+      internalID: -1240369703884855828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: custom-pixelated-ui_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 4
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 8, z: 6, w: 6}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d44e4ca4d3cf890800000000000000
+      internalID: -7422990694473249442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: custom-pixelated-ui_9
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 11
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eca15e0fe99bbd770800000000000000
+      internalID: 8636700802710575822
       vertices: []
       indices: 
       edges: []
@@ -264,7 +389,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: deafd5694e2a3b448835e250dc7ffacf
+    spriteID: 45346cfee2209c14ba6ad3f49887135e
     internalID: 0
     vertices: []
     indices: 
@@ -274,11 +399,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      custom-pixelated-ui2_0: 8262238342429319905
-      custom-pixelated-ui2_1: -1495304591671297031
-      custom-pixelated-ui2_2: -1499992684692759479
-      custom-pixelated-ui2_3: -5928649911347706701
-      custom-pixelated-ui2_4: -3789403973768605819
+      custom-pixelated-ui_0: 4199721511246118556
+      custom-pixelated-ui_1: 174882707998118935
+      custom-pixelated-ui_2: -5680376104133894565
+      custom-pixelated-ui_3: 7184965340191378653
+      custom-pixelated-ui_4: 3683355033279092007
+      custom-pixelated-ui_5: -1184435079356472907
+      custom-pixelated-ui_6: -6505069628452873933
+      custom-pixelated-ui_7: -1240369703884855828
+      custom-pixelated-ui_8: -7422990694473249442
+      custom-pixelated-ui_9: 8636700802710575822
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

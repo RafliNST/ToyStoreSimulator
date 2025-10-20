@@ -20,7 +20,6 @@ namespace Player
             GameInput.Instance.onPlayerMove.performed += (InputAction.CallbackContext ctx) =>
             {
                 isMoving = true;
-                Debug.Log("IsMoving: " + isMoving);
                 if (!isCoroutineRunning)
                 {
                     isCoroutineRunning = true;
@@ -32,7 +31,6 @@ namespace Player
             {
                 movingTime = 0f;
                 isMoving = false;
-                Debug.Log("IsMoving: " + isMoving);
                 StopCoroutine("PerformMoving");
                 isCoroutineRunning = false;
             };
@@ -48,7 +46,6 @@ namespace Player
             GameInput.Instance.onPlayerMove.performed -= (InputAction.CallbackContext ctx) =>
             {
                 isMoving = true;
-                Debug.Log("IsMoving: " + isMoving);
                 if (!isCoroutineRunning)
                 {
                     isCoroutineRunning = true;
@@ -59,7 +56,6 @@ namespace Player
             GameInput.Instance.onPlayerMove.canceled -= (InputAction.CallbackContext ctx) =>
             {
                 isMoving = false;
-                Debug.Log("IsMoving: " + isMoving);
                 StopCoroutine("PerformMoving");
                 isCoroutineRunning = false;
             };
@@ -76,7 +72,6 @@ namespace Player
             {
                 movingTime += Time.deltaTime;
                 curveSpeed = Mathf.Clamp01(movingTime);
-                Debug.Log($"Moving Time: {movingTime} - Curve Speed : {curveSpeed}");
 
                 transform.position += GameInput.Instance.Move() * movementCurve.Evaluate(curveSpeed) * speed * Time.deltaTime;
                 yield return null;

@@ -23,4 +23,9 @@ public class Interactable : MonoBehaviour
         ShowIcon();
         Debug.Log($"Identifier Name: {actionIdentifier}");
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        InteractableController.Instance.onInteractableExit?.Invoke();
+    }
 }

@@ -335,7 +335,7 @@ Camera:
   far clip plane: 100
   field of view: 34
   orthographic: 1
-  orthographic size: 5.4375
+  orthographic size: 5.5625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba1f81a673632547909030ee49ca774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconToShow: {fileID: -1144453367, guid: 3e468a28dc540a34594d236638209109, type: 3}
-  actionIdentifier: huu
+  iconToShow: {fileID: -40176318, guid: b1fc9e4fc1b82a44dae42d0e4e842b8c, type: 3}
+  actionIdentifier: asdfewef
 --- !u!61 &1012468111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1452,7 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba1f81a673632547909030ee49ca774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconToShow: {fileID: 3108348912356493597, guid: 0cfcb72eeb87e7a46a8d944c16af56cf, type: 3}
+  iconToShow: {fileID: 2153611453704789883, guid: b1fc9e4fc1b82a44dae42d0e4e842b8c, type: 3}
   actionIdentifier: asdf
 --- !u!61 &1190627641
 BoxCollider2D:
@@ -5656,8 +5656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba1f81a673632547909030ee49ca774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconToShow: {fileID: -7033315888536907400, guid: 0cfcb72eeb87e7a46a8d944c16af56cf, type: 3}
-  actionIdentifier: huu
+  iconToShow: {fileID: -386264618, guid: e8af3317ca6f7584fb5352723a0b027f, type: 3}
+  actionIdentifier: asdfasdf
 --- !u!61 &1445046247
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6418,7 +6418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba1f81a673632547909030ee49ca774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconToShow: {fileID: 941528710, guid: 3e468a28dc540a34594d236638209109, type: 3}
+  iconToShow: {fileID: 2038897231, guid: b1fc9e4fc1b82a44dae42d0e4e842b8c, type: 3}
   actionIdentifier: huu
 --- !u!61 &2121164219
 BoxCollider2D:

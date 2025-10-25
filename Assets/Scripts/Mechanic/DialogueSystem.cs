@@ -7,8 +7,17 @@ using System.Linq;
 
 public class DialogueSystem : Singleton<DialogueSystem>
 {
+    private bool IsDialogueShowed
+    {
+        get => dialogueCanvas.enabled;
+        set => dialogueCanvas.enabled = value;
+    }
+
     #region Dialogue System Setup
-    [SerializeField, Range(.1f, 5f)]
+    [SerializeField]
+    Canvas dialogueCanvas;
+
+    [SerializeField, Range(.05f, .5f)]
     float textSpeed;
 
     [SerializeField]
@@ -20,56 +29,104 @@ public class DialogueSystem : Singleton<DialogueSystem>
     SpriteRenderer speakerSprite;
     #endregion
 
-    bool notInDialogue = true;
+    int currentDialogueIdx = 0;
+    bool isTyping = false;
 
     public override void OnInitialize()
     {
-        
+
     }
 
     private void Start()
     {
-        //GameInput.Instance.onPlayerMove.performed += ShowDialogue;
-        GameInput.Instance.onPlayerInteract.performed += ShowDialogue;
+        GameInput.Instance.onPlayerInteract.performed += OnNextDialgoue;
+
+        IsDialogueShowed = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (notInDialogue)
-            {
-                //GameInput.Instance.onPlayerInteract.performed += ShowDialogue;
-                Debug.Log("Masuk Ke If");
-            }
-            Debug.Log("Space Terdeteksi");
-        }
+
     }
 
     private void OnDisable()
     {
-        GameInput.Instance.onPlayerInteract.performed -= ShowDialogue;
+        GameInput.Instance.onPlayerInteract.performed -= OnNextDialgoue;
     }
 
-    public void ChangeDialogue()
+    public void StartDialogue()
     {
-        speakerName.text = dialogueList.First().speakerName;
-        speakerDialogue.text = dialogueList.First().speakerDialogue;
-        dialogueList.RemoveAt(0);
-    }
-
-    public void ShowDialogue(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("Show Dialgoue Invoked");
-        if (dialogueList.Count > 0)
+        if (dialogueList == null || dialogueList.Count == 0)
         {
-            //notInDialogue = false;
-            Debug.Log("List > 0");
-            ChangeDialogue();
-        }   
-        //else
-        //{
-        //    GameInput.Instance.onPlayerInteract.performed -= ShowDialogue;
-        //}
+            Debug.LogWarning("Isi Kosong");
+            return;
+        }
+
+        IsDialogueShowed = true;
+        currentDialogueIdx = 0;
+
+    }
+
+    private void DisplayCurrentLine()
+    {
+        DialogueNode dialogueNode = dialogueList[currentDialogueIdx];
+
+        speakerName.text = dialogueNode.speakerName;
+        if (speakerSprite != null && dialogueNode.speakerSprite != null)
+        {
+            speakerSprite.sprite = dialogueNode.speakerSprite;
+        }
+
+        speakerName.text = dialogueNode.speakerName;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(dialogueNode.speakerDialogue));
+    }
+
+    private void OnNextDialgoue(InputAction.CallbackContext ctx)
+    {
+        if (!IsDialogueShowed || isTyping)
+        {
+            return;
+        }
+
+        currentDialogueIdx++;
+
+        if (currentDialogueIdx >= dialogueList.Count)
+        {
+            EndDialogue();
+            return;
+        }
+
+        DisplayCurrentLine();
+    }
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
+        speakerDialogue.text = "";
+
+        foreach(char c in sentence)
+        {
+            speakerDialogue.text += c;
+
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+        isTyping = false;
+    }
+
+    private void EndDialogue()
+    {
+        IsDialogueShowed = false;
+
+        dialogueList.Clear();
+        currentDialogueIdx = 0;
+        StopAllCoroutines();
+    }
+
+    public void SetDialogueList(List<DialogueNode> dialogueNodes)
+    {
+        dialogueList = dialogueNodes;
+        currentDialogueIdx = 0;
     }
 }

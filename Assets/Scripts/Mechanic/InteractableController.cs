@@ -9,8 +9,8 @@ public class InteractableController : Singleton<InteractableController>
     [HideInInspector]
     public UnityEvent<string, Sprite> onInteractableDetected;
     [HideInInspector]
-    public UnityEvent onInteractableExit;
-    private Dictionary<string, Action> interactableActions;
+    public UnityEvent<string> onInteractableExit;
+    private Dictionary<string, int> interactableIdentityRecord;
 
     [SerializeField]
     GameObject iconDisplayerPrefab;
@@ -45,10 +45,10 @@ public class InteractableController : Singleton<InteractableController>
 
     public override void OnInitialize()
     {
-        interactableActions = new Dictionary<string, Action>();
+        interactableIdentityRecord = new Dictionary<string, int>();
         spriteRenderers = new List<SpriteRenderer>();
         spriteRenderersGO = new List<GameObject>();
-        onInteractableExit = new UnityEvent();
+        onInteractableExit = new UnityEvent<string>();
 
         onInteractableDetected.AddListener(DisplayIcon);
         onInteractableExit.AddListener(RemoveIcon);
@@ -84,24 +84,29 @@ public class InteractableController : Singleton<InteractableController>
         if (activeIconCount < maxIconShowed-1)
             activeIconCount++;
 
-
         spriteRenderersGO[activeIconCount].SetActive(true);
         spriteRenderers[activeIconCount].sprite = icon;
+
+        interactableIdentityRecord.TryAdd(actionIdentifier, activeIconCount);
 
         spriteRenderers[activeIconCount].color = (activeIconCount == currentIconIdx) ?
             Color.white : colorTranspareancy;
     }
 
-    private void RemoveIcon()
+    private void RemoveIcon(string actionIdentifier)
     {
-        spriteRenderers[activeIconCount].color = colorTranspareancy;
-        spriteRenderersGO[activeIconCount].SetActive(false);
+        if (interactableIdentityRecord.TryGetValue(actionIdentifier, out int rendererIdx))
+        {
+            spriteRenderers[rendererIdx].color = colorTranspareancy;
+            spriteRenderersGO[rendererIdx].SetActive(false);
+            interactableIdentityRecord.Remove(actionIdentifier);
+        }
 
         activeIconCount--;
         currentIconIdx = currentIconIdx;
-
         transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);
     }
+
 
     private void OnMenuChanged(InputAction.CallbackContext ctx)
     {

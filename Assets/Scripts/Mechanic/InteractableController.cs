@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -104,9 +105,35 @@ public class InteractableController : Singleton<InteractableController>
 
         activeIconCount--;
         currentIconIdx = currentIconIdx;
-        transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);
+        transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);     
+        
+        ReDisplayIcons();
     }
 
+    private void ReDisplayIcons()
+    {
+        for (int i = 0; i < maxIconShowed; i++)
+        {
+            spriteRenderers[i].color = (i == currentIconIdx) ?
+                    Color.white : colorTranspareancy;
+
+            spriteRenderersGO[i].SetActive(false);
+        }
+
+        List<string> actionIdentifiers = interactableIdentityRecord.Keys.ToList();
+
+        for (int i = 0; i < actionIdentifiers.Count; i++)
+        {
+            if (interactableIdentityRecord.TryGetValue(actionIdentifiers[i], out int idx))
+            {
+                spriteRenderersGO[i].SetActive(true);
+                spriteRenderers[i].sprite = spriteRenderers[idx].sprite;
+
+                spriteRenderers[i].color = (i == currentIconIdx) ?
+                    Color.white : colorTranspareancy;
+            }
+        }
+    }
 
     private void OnMenuChanged(InputAction.CallbackContext ctx)
     {

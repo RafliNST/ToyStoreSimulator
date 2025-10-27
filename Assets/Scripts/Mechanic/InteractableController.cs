@@ -24,8 +24,9 @@ public class InteractableController : Singleton<InteractableController>
 
     private List<SpriteRenderer> spriteRenderers;
     private List<GameObject> spriteRenderersGO;
-    
-    int _currentIconIdx = 0, activeIconCount = -1;
+
+    int _currentIconIdx = 0;
+    public int activeIconCount { get; private set; }
     Color colorTranspareancy;
     Vector3 initialPos;
 
@@ -71,6 +72,8 @@ public class InteractableController : Singleton<InteractableController>
             renderer.color = new Color(1, 1, 1, iconTransparency);
             rendererGO.SetActive(false);
         }
+
+        activeIconCount = -1;
 
         colorTranspareancy = new Color(1, 1, 1, iconTransparency);
         GameInput.Instance.onPlayerChangeMenu.performed += OnMenuChanged;

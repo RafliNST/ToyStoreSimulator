@@ -132,6 +132,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
     private void EndDialogue()
     {
         IsDialogueShowed = false;
+        if (InteractableController.Instance.activeIconCount < 0)
+            GameInput.Instance.onPlayerInteract.Disable();
+        else
+            GameInput.Instance.onPlayerInteract.Enable();
 
         dialogueList.Clear();
         currentDialogueIdx = 0;

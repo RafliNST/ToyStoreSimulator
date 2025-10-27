@@ -10,7 +10,7 @@ public class InteractableController : Singleton<InteractableController>
     [HideInInspector]
     public UnityEvent<string, Sprite> onInteractableDetected;
     [HideInInspector]
-    public UnityEvent<string> onInteractableExit;
+    public UnityEvent<string> onInteractableExit, onInteractableSelected;
     private Dictionary<string, int> interactableIdentityRecord;
 
     [SerializeField]
@@ -50,6 +50,7 @@ public class InteractableController : Singleton<InteractableController>
         spriteRenderers = new List<SpriteRenderer>();
         spriteRenderersGO = new List<GameObject>();
         onInteractableExit = new UnityEvent<string>();
+        onInteractableSelected = new UnityEvent<string>();
 
         onInteractableDetected.AddListener(DisplayIcon);
         onInteractableExit.AddListener(RemoveIcon);
@@ -73,11 +74,13 @@ public class InteractableController : Singleton<InteractableController>
 
         colorTranspareancy = new Color(1, 1, 1, iconTransparency);
         GameInput.Instance.onPlayerChangeMenu.performed += OnMenuChanged;
+        GameInput.Instance.onPlayerInteract.performed += OnMenuSelected;
     }
 
     private void OnDisable()
     {
         GameInput.Instance.onPlayerChangeMenu.performed -= OnMenuChanged;
+        GameInput.Instance.onPlayerInteract.performed -= OnMenuSelected;
     }
 
     private void DisplayIcon(string actionIdentifier, Sprite icon)
@@ -92,6 +95,8 @@ public class InteractableController : Singleton<InteractableController>
 
         spriteRenderers[activeIconCount].color = (activeIconCount == currentIconIdx) ?
             Color.white : colorTranspareancy;
+
+        GameInput.Instance.onPlayerInteract.Enable();
     }
 
     private void RemoveIcon(string actionIdentifier)
@@ -105,7 +110,10 @@ public class InteractableController : Singleton<InteractableController>
 
         activeIconCount--;
         currentIconIdx = currentIconIdx;
-        transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);     
+        transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);   
+        
+        if (activeIconCount < 0)
+            GameInput.Instance.onPlayerInteract.Disable();
         
         ReDisplayIcons();
     }
@@ -144,5 +152,12 @@ public class InteractableController : Singleton<InteractableController>
             currentIconIdx += dir;
             transform.localPosition = new Vector3((-currentIconIdx * iconOffset).x, initialPos.y);
         }
+    }
+
+    private void OnMenuSelected(InputAction.CallbackContext ctx)
+    {
+        var keys = interactableIdentityRecord.Keys.ToList();
+        Debug.Log($"Terpanggil, Identifier: {keys[currentIconIdx]}");
+        onInteractableSelected?.Invoke(keys[currentIconIdx]);
     }
 }

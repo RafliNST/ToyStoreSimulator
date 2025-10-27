@@ -10,7 +10,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
     private bool IsDialogueShowed
     {
         get => dialogueCanvas.enabled;
-        set => dialogueCanvas.enabled = value;
+        set => DisableSettings(value);
     }
 
     #region Dialogue System Setup
@@ -20,8 +20,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
     [SerializeField, Range(.05f, .5f)]
     float textSpeed;
 
-    [SerializeField]
-    public List<DialogueNode> dialogueList;
+    private List<DialogueNode> dialogueList;
 
     [SerializeField]
     TMPro.TextMeshProUGUI speakerName, speakerDialogue;
@@ -41,7 +40,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
     {
         GameInput.Instance.onPlayerInteract.performed += OnNextDialgoue;
 
-        IsDialogueShowed = true;
+        IsDialogueShowed = false;
     }
 
     private void Update()
@@ -54,17 +53,32 @@ public class DialogueSystem : Singleton<DialogueSystem>
         GameInput.Instance.onPlayerInteract.performed -= OnNextDialgoue;
     }
 
-    public void StartDialogue()
+    private void DisableSettings(bool status)
+    {
+        dialogueCanvas.enabled = status;
+
+        if (status)
+        {
+            GameInput.Instance.onPlayerInteract.Enable();
+        }   else
+        {
+            GameInput.Instance.onPlayerInteract.Disable();
+        }
+    }
+
+    public DialogueSystem StartDialogue()
     {
         if (dialogueList == null || dialogueList.Count == 0)
         {
             Debug.LogWarning("Isi Kosong");
-            return;
+            return null;
         }
 
         IsDialogueShowed = true;
         currentDialogueIdx = 0;
 
+        DisplayCurrentLine();
+        return this;
     }
 
     private void DisplayCurrentLine()
@@ -124,9 +138,11 @@ public class DialogueSystem : Singleton<DialogueSystem>
         StopAllCoroutines();
     }
 
-    public void SetDialogueList(List<DialogueNode> dialogueNodes)
+    public DialogueSystem SetDialogueList(List<DialogueNode> dialogueNodes)
     {
         dialogueList = dialogueNodes;
         currentDialogueIdx = 0;
+
+        return this;
     }
 }

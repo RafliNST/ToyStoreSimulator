@@ -8,9 +8,31 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     string actionIdentifier;
 
-    public virtual void Action()
+    DialgoueInteraction dialgoueInteraction;
+    SceneInteraction sceneInteraction;
+
+    public virtual void InteractableAction(string identifier)
     {
-        
+        if (identifier == actionIdentifier)
+        {
+            if (dialgoueInteraction != null)
+            {
+                dialgoueInteraction.Interact();
+            }
+
+            if (sceneInteraction != null)
+            {
+                sceneInteraction.Interact();
+            }
+        }
+    }
+
+    private void Start()
+    {
+        InteractableController.Instance.onInteractableSelected.AddListener(InteractableAction);
+
+        dialgoueInteraction = GetComponent<DialgoueInteraction>();
+        sceneInteraction = GetComponent<SceneInteraction>();
     }
 
     public void ShowIcon()
@@ -27,4 +49,9 @@ public class Interactable : MonoBehaviour
     {
         InteractableController.Instance.onInteractableExit?.Invoke(actionIdentifier);
     }
+}
+
+public abstract class InteractableBase : MonoBehaviour
+{
+    public abstract void Interact();
 }

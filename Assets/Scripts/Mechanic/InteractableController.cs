@@ -125,8 +125,8 @@ public class InteractableController : Singleton<InteractableController>
     {
         for (int i = 0; i < maxIconShowed; i++)
         {
-            spriteRenderers[i].color = (i == currentIconIdx) ?
-                    Color.white : colorTranspareancy;
+            //spriteRenderers[i].color = (i == currentIconIdx) ?
+            //        Color.white : colorTranspareancy;
 
             spriteRenderersGO[i].SetActive(false);
         }
@@ -144,6 +144,13 @@ public class InteractableController : Singleton<InteractableController>
                     Color.white : colorTranspareancy;
             }
         }
+
+        interactableIdentityRecord.Clear();
+
+        for (int i = 0; i < actionIdentifiers.Count; i++)
+        {
+            interactableIdentityRecord.Add(actionIdentifiers[i], i);
+        }
     }
 
     private void OnMenuChanged(InputAction.CallbackContext ctx)
@@ -160,7 +167,6 @@ public class InteractableController : Singleton<InteractableController>
     private void OnMenuSelected(InputAction.CallbackContext ctx)
     {
         var keys = interactableIdentityRecord.Keys.ToList();
-        Debug.Log($"Terpanggil, Identifier: {keys[currentIconIdx]}");
         onInteractableSelected?.Invoke(keys[currentIconIdx]);
     }
 }
